@@ -76,7 +76,7 @@ A_output(message)
   printf("Sending message with checksum %d\n", checksum);
 
   is_sending = 1;
-  //starttimer(0,1000);
+  starttimer(0,1000000);
   tolayer3(0,packet);
 
   sendingPkt = packet;
@@ -96,7 +96,7 @@ A_input(packet)
   printf("Receiving ACK of %d\n", packet.acknum);
   printf("\n");
   
-  //stoptimer(0);
+  stoptimer(0);
   is_sending = 0;
   
   if (packet.acknum == A_global_seqnum + 20) {
@@ -112,7 +112,7 @@ A_input(packet)
 /* called when A's timer goes off */
 A_timerinterrupt()
 {
-
+  printf("TIMER A ESTOUROU!!\n");
 }  
 
 /* the following routine will be called once (only) before any other */
