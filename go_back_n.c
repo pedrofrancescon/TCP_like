@@ -76,17 +76,15 @@ A_output(message)
   printf("Sending message with checksum %d\n", checksum);
 
   is_sending = 1;
-  starttimer(0,1000000);
+  starttimer(0,10.0);
   tolayer3(0,packet);
 
   sendingPkt = packet;
-
 }
 
 B_output(message)  /* need be completed only for extra credit */
   struct msg message;
 {
-
 }
 
 /* called from layer 3, when a packet arrives for layer 4 */
@@ -100,12 +98,13 @@ A_input(packet)
   is_sending = 0;
   
   if (packet.acknum == A_global_seqnum + 20) {
-     A_global_seqnum += 20;
+    A_global_seqnum += 20;
   } 
+  
   // else {
   //   is_sending = true;
   //   tolayer3(0,sendingPkt);
-  //   starttimer(0,1000);
+  //   starttimer(0,10.0);
   // }
 }
 
